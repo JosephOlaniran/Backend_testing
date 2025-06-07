@@ -14,6 +14,8 @@ import { IdeaService } from './idea/idea.service';
 
 
 
+
+
 @Controller('idea')
 export class IdeaController {
   constructor(private readonly ideaService: IdeaService) {}

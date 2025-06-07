@@ -6,6 +6,7 @@ import { Idea } from 'src/idea/idea.entity';
 import { CreateIdeaDto } from './dto/create-idea.dto';
 import { UpdateIdeaDto } from './dto/update-idea.dto';
 import { v4 as uuidv4 } from 'uuid';
+import { IdeaStatus } from './idea.entity';
 
 @Injectable()
 export class IdeaService {
@@ -58,4 +59,14 @@ export class IdeaService {
 
     return this.repo.remove(idea);
   }
+
+
+  async changeStatus(id: number, status: IdeaStatus) {
+  const idea = await this.repo.findOneBy({ id });
+  if (!idea) throw new NotFoundException('Idea not found');
+
+  idea.status = status;  // now no error
+  return await this.repo.save(idea);
+}
+
 }

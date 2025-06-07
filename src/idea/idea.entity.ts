@@ -6,6 +6,12 @@ import {
 import { User } from '../user/user.entity';
 import { Comment } from 'src/comment/comment.entity';
 
+export enum IdeaStatus {
+  PENDING = 'pending',
+  APPROVED = 'approved',
+  REJECTED = 'rejected',
+}
+
 @Entity()
 export class Idea {
   @PrimaryGeneratedColumn()
@@ -43,4 +49,7 @@ export class Idea {
 
   @OneToMany(() => Comment, (comment) => comment.ideaId, {cascade: true})
   comments: Comment[];
+
+  @Column({ type: 'enum', enum: IdeaStatus, default: IdeaStatus.PENDING })
+  status: IdeaStatus;
 }

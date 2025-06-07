@@ -5,6 +5,8 @@ import { IdeaService } from './idea.service';
 import { CreateIdeaDto } from './dto/create-idea.dto';
 import { UpdateIdeaDto } from './dto/update-idea.dto';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { IdeaStatus } from './idea.entity';
+
 
 @Controller('idea')
 export class IdeaController {
@@ -35,4 +37,18 @@ export class IdeaController {
   remove(@Param('id') id: number) {
     return this.ideaService.remove(id);
   }
+
+
+
+  @Patch(':id/approve')
+approveIdea(@Param('id') id: number) {
+  return this.ideaService.changeStatus(id, IdeaStatus.APPROVED);
+}
+
+@Patch(':id/reject')
+rejectIdea(@Param('id') id: number) {
+  return this.ideaService.changeStatus(id, IdeaStatus.REJECTED);
+}
+
+
 }
