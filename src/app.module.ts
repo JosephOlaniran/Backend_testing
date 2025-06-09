@@ -17,10 +17,15 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      url: process.env.DATABASE_URL, // 👉 uses Railway's connection string
+     type: 'mysql',
+      host: 'turntable.proxy.rlwy.net',
+      port: 48545,
+      username: 'root',
+      password: 'zYbSqlTMZwudzCCzbFiLthvLNNkyDWzC',
+      database: 'railway',
       entities: [User, Idea, Comment, Vote],
-      synchronize: true, //  turn off in production
+      synchronize: true,
+      ssl: { rejectUnauthorized: false }, // This handles SSL requirements
     }),
     UserModule,
     IdeaModule,
