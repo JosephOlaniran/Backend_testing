@@ -20,7 +20,8 @@ import { ConfigModule } from '@nestjs/config';
       type: 'mysql',
       url: process.env.DATABASE_URL,
       entities: [User, Idea, Comment, Vote],
-      synchronize: true,
+      synchronize: false,
+
       
     }),
     UserModule,
