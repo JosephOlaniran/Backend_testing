@@ -33,4 +33,14 @@ import { ConfigModule } from '@nestjs/config';
     VoteModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('=== MYSQL DEBUG ===');
+    console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
+    console.log('DATABASE_URL value:', process.env.DATABASE_URL);
+    console.log('Using individual MySQL params');
+    console.log('Host: turntable.proxy.rlwy.net');
+    console.log('Port: 48545');
+    console.log('=== END DEBUG ===');
+  }
+}
