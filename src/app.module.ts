@@ -19,7 +19,7 @@ import { ConfigModule } from '@nestjs/config';
     TypeOrmModule.forRoot({
      type: 'mysql',
       host: 'turntable.proxy.rlwy.net',
-      port: 48545,
+      port: 3306,
       username: 'root',
       password: 'zYbSqlTMZwudzCCzbFiLthvLNNkyDWzC',
       database: 'railway',
