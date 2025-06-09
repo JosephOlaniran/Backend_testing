@@ -18,9 +18,14 @@ import { ConfigModule } from '@nestjs/config';
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      url: process.env.DATABASE_URL,
+      host: 'turntable.proxy.rlwy.net',
+      port: 48545,
+      username: 'root',
+      password: 'zYbSqlTMZwudzCCzbFiLthvLNNkyDWzC',
+      database: 'railway',
       entities: [User, Idea, Comment, Vote],
-      synchronize: false,
+      synchronize: true,
+      logging: true
 
       
     }),
@@ -31,13 +36,5 @@ import { ConfigModule } from '@nestjs/config';
   ],
 })
 export class AppModule {
-  constructor() {
-    console.log('=== MYSQL DEBUG ===');
-    console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
-    console.log('DATABASE_URL value:', process.env.DATABASE_URL);
-    console.log('Using individual MySQL params');
-    console.log('Host: turntable.proxy.rlwy.net');
-    console.log('Port: 48545');
-    console.log('=== END DEBUG ===');
-  }
+  
 }
